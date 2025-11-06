@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans text-foreground relative">
         <Page />
         <WelcomePage />
-        {/* <DisableInspect /> */}
+        <DisableInspect />
         <FloatingHearts />
         <TawkToChat />
         <PageTransition>{children}</PageTransition>
