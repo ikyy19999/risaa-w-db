@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+model GalleryItem {
+  id            String    @id @default(cuid())
+  title         String
+  description   String?
+  category      String    // e.g., "Jakarta", "Yogyakarta", "Bogor"
+  subcategory   String?   // e.g., "Kafe", "Taman", "Pantai"
+  imageUrl      String    // Public URL from Supabase storage
+  storagePath   String    // Path in 'journey' bucket for deletion
+  mediaType   String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([category])
+  @@index([subcategory])
+}
+
+model AdminUser {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String    // Hashed password using bcryptjs
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([email])
+}
