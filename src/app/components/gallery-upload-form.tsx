@@ -61,7 +61,7 @@ export function GalleryUploadForm({ onSuccess }: UploadFormProps) {
       const selectedFile = e.target.files[0]
       
       // File type validation
-      const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+      const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif']
       const allowedVideoTypes = ['video/mp4', 'video/mpeg', 'video/quicktime', 'video/x-msvideo']
       
       if (![...allowedImageTypes, ...allowedVideoTypes].includes(selectedFile.type)) {
@@ -194,7 +194,7 @@ export function GalleryUploadForm({ onSuccess }: UploadFormProps) {
           </p>
         )}
         <p className="mt-1 text-xs text-gray-500">
-          Supported formats: JPEG, PNG, GIF, WebP, MP4, AVI, MOV. Max size: 50MB
+          Supported formats: JPEG, PNG, GIF, WebP, MP4, AVIF, MOV. Max size: 50MB
         </p>
       </div>
 
